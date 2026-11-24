@@ -1,0 +1,44 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+end_of_line = lf
+
+[*.{yml,yaml}]
+indent_size = 2
+
+[*.java]
+max_line_length = 120
+
+# 方法声明时的参数
+ij_java_method_parameters_wrap = on_every_item
+ij_java_method_parameters_new_line_after_left_paren = true
+ij_java_method_parameters_right_paren_on_new_line = true
+
+# 链式调用
+ij_java_method_call_chain_wrap = on_every_item
+ij_java_wrap_first_method_in_call_chain = true
+ij_java_align_multiline_chained_methods = true
+
+# 续行缩进
+ij_continuation_indent_size = 4
+
+# 方法调用时的参数
+ij_java_call_parameters_wrap = on_every_item
+ij_java_call_parameters_new_line_after_left_paren = true
+ij_java_call_parameters_right_paren_on_new_line = true
+ij_java_align_multiline_parameters_in_calls = false
+
+# 强制禁止通配符导入
+ij_java_names_count_to_use_import_on_demand = 999
+ij_java_class_count_to_use_import_on_demand = 999
+
+# 强制：单行 if/循环必须换行
+ij_java_keep_simple_blocks_in_one_line = false
+
+# 保留手动换行
+ij_java_keep_line_breaks = true

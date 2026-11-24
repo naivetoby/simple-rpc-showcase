@@ -1,0 +1,38 @@
+x-app: &app
+  environment:
+    SPRING_RABBITMQ_HOST: rabbitmq
+    SPRING_RABBITMQ_USERNAME: showcase
+    SPRING_RABBITMQ_PASSWORD: local-demo
+  depends_on:
+    rabbitmq:
+      condition: service_healthy
+
+services:
+  rabbitmq:
+    build:
+      context: .
+      dockerfile: Dockerfile.rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: showcase
+      RABBITMQ_DEFAULT_PASS: local-demo
+    healthcheck:
+      test: [CMD, rabbitmq-diagnostics, -q, check_port_connectivity]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  topic-service:
+    <<: *app
+    build:
+      context: .
+      args:
+        MODULE: topic-service
+
+  gateway:
+    <<: *app
+    build:
+      context: .
+      args:
+        MODULE: gateway
+    ports:
+      - "127.0.0.1:8080:8080"
