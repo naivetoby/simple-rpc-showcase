@@ -6,7 +6,7 @@ import vip.toby.rpc.annotation.EnableSimpleRpc;
 import vip.toby.rpc.entity.RpcMode;
 
 @EnableSimpleRpc(mode = RpcMode.RPC_CLIENT_CONFIGURER)
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "showcase")
 public class Application {
 
     public static void main(String[] args) {

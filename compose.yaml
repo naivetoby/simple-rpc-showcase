@@ -16,7 +16,7 @@ services:
       RABBITMQ_DEFAULT_USER: showcase
       RABBITMQ_DEFAULT_PASS: local-demo
     healthcheck:
-      test: [CMD, rabbitmq-diagnostics, -q, check_port_connectivity]
+      test: [CMD, gosu, rabbitmq, rabbitmq-diagnostics, -q, check_port_connectivity]
       interval: 5s
       timeout: 5s
       retries: 30
@@ -25,6 +25,7 @@ services:
     <<: *app
     build:
       context: .
+      target: ${APP_MODE:-jvm}
       args:
         MODULE: topic-service
 
@@ -32,6 +33,7 @@ services:
     <<: *app
     build:
       context: .
+      target: ${APP_MODE:-jvm}
       args:
         MODULE: gateway
     ports:

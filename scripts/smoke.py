@@ -1,4 +1,4 @@
-"""Run against a running compose stack. Python 3, standard library only."""
+"""Verify the gateway HTTP API in either JVM or native mode using Python 3."""
 
 import json
 import os
